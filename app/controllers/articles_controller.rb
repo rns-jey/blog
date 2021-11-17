@@ -1,4 +1,4 @@
-class ArticlesController < ActionController::Base
+class ArticlesController < ApplicationController
   before_action :set_article, only:[:edit, :update, :destroy]
   
   def index
