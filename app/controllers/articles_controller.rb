@@ -1,4 +1,6 @@
 class ArticlesController < ActionController::Base
+  before_action :set_article, only:[:edit, :update, :destroy]
+  
   def index
     @articles = Article.all
   end
@@ -13,25 +15,37 @@ class ArticlesController < ActionController::Base
     if @article.save
       redirect_to articles_path
     else
+      flash[:error] = "Blank field"
       render :new
     end
   end
 
   def edit
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
-      redirect_to article_path
+      redirect_to articles_path, notice: "Updated an article"
     else
+      flash[:error] = "Blank field"
       render :edit
     end
   end
 
+  def destroy
+    @article.destroy
+    redirect_to articles_path
+  end
+
+  
+
+  private
+
   def article_params
     params.require(:article).permit(:title, :author, :content)
+  end
+
+  def set_article
+    @article = Article.find(params[:id])
   end
 end
