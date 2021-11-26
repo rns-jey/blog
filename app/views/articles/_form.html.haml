@@ -1,29 +1,26 @@
 = form_with model: @article do |f|
+  - @article.errors.full_messages_for(:title).each do |message|
+    .div
+      = message
+  
+  - @article.errors.full_messages_for(:author).each do |message|
+    .div
+      = message
+  
+  - @article.errors.full_messages_for(:content).each do |message|
+    .div
+      = message
+
   = f.label :title
   = f.text_field :title
-  %br
-
-  - if f.object.errors[:title].present?
-    %span= f.object.errors[:title].to_sentence
-  
   %br
   
   = f.label :author
   = f.text_field :author
   %br
 
-  - if f.object.errors[:author].present?
-    %span= f.object.errors[:author].to_sentence
-
-  %br
-
   = f.label :content
   = f.text_area :content
-  %br
-
-  - if f.object.errors[:content].present?
-    %span= f.object.errors[:content].to_sentence
-
   %br
 
   = f.submit

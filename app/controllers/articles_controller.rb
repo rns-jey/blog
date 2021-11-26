@@ -5,6 +5,10 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def show
+    @article = Article.find(params[:id])
+  end
+
   def new
     @article = Article.new
   end
@@ -13,7 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to articles_path
+      redirect_to @article
     else
       flash[:error] = "Blank field"
       render :new
@@ -25,7 +29,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to articles_path, notice: "Updated an article"
+      redirect_to @article
     else
       flash[:error] = "Blank field"
       render :edit
