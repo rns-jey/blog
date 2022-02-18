@@ -1,4 +1,4 @@
-class InquiryController < ApplicationController
+class InquiriesController < ApplicationController
   before_action :set_inquiry, only:[:edit, :update, :destroy]
   
   def index
