@@ -8,7 +8,7 @@
 
       %div{ class: "my-2.5 text-sm flex" }
         .mr-2.tracking-wide
-          = article.created_at.strftime("%B %d, %Y")
+          = article.created_at.in_time_zone("Beijing").strftime("%B %d, %Y")
         .mr-2.tracking-wide
           |
         .mr-2.tracking-wide
