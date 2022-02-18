@@ -15,7 +15,11 @@
   <body class="h-full">
     <%= flash[:error] %>
     <%= flash[:notice] %>
-
-    <%= yield %>
+    <div class="flex h-full">
+      <%= render "layouts/sidebar" %>
+      <div class="h-full.py-12.px-12 w-4/5">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
