@@ -1,22 +1,27 @@
-%h1= "Hello, World!"
+.block.mx-auto
+  %h1.text-3xl
+    All Articles
+  
+  .mb-10.pb-10.border-b.border-black
 
-%table
-  %thead
-    %tr
-      %th= "Title"
-      %th= "Author"
-      %th= "Content"
-      %th= "Actions"
-  - @articles.each do |article|
-    %tr
-      %td
-        = article.title
-      %td
-        = article.author
-      %td
-        = article.content.truncate(100)
-      %td
-        = link_to article_path(article.id) do
-          View
+  %div{ role: "list"}
+    - @articles.each do |article|
+      %div{ role: "listitem"}
+        = link_to root_path do
+          %h1{ class: "mt-0 mb-2.5 text-3xl hover:text-gray-600" }
+            = article.title
 
-= link_to "New Article", new_article_path
+      %div{ class: "my-2.5 text-sm flex" }
+        .mr-2.tracking-wide
+          = article.created_at.strftime("%B %d, %Y")
+        .mr-2.tracking-wide
+          |
+        .mr-2.tracking-wide
+          = article.author
+      
+      %p{ class: "mb-2.5 mt-0 font-light text-base" }
+        = truncate(article.content, :length => 250, :separator => ' ')
+
+      = link_to "Continue reading ->", article, class: "py-2 px-3 border-2 border-gray-400 rounded-xl hover:border-gray-600"
+
+      .mb-10.pb-10.border-b.border-black
