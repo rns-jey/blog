@@ -1,14 +1,21 @@
-%h1
-  = @article.title
+.block.mx-auto
+  .mb-10.pb-7.border-b.border-black.text-center.text-4xl
+    %h1
+      = @article.title
+    %div{ class: "my-2.5 text-sm flex justify-center" }
+      .mr-2.tracking-wide
+        = @article.created_at.strftime("%B %d, %Y")
+      .mr-2.tracking-wide
+        |
+      .mr-2.tracking-wide
+        = @article.author
+    
+  %div
+    %p{ :class => "mt-0 mb-5 font-light" }
+      = @article.content
+  
+  .mb-10.pb-7.border-b.border-black.text-center.text-4xl
 
-%h2
-  = @article.author
-
-%p
-  = @article.content
-
-%ul
-  %li
-    = link_to "Edit", edit_article_path(@article)
-  %li
-    = link_to "Destroy", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }
+  .flex.gap-2
+    = link_to "Edit", edit_article_path(@article), :class => "block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm py-2 px-7 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    = link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" }, :class => "block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm py-2 px-7 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

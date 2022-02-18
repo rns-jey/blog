@@ -1,26 +1,27 @@
-.h-full.py-12.px-12{ class: "w-4/5" }
-  .block.mx-auto
-    %div{ role: "list"}
-      - @articles.each do |article|
-        %div{ role: "listitem"}
-          = link_to root_path do
-            %h1{ class: "mt-0 mb-2.5 text-3xl hover:text-gray-600" }
-              = article.title
+.block.mx-auto
+  -# .flex.justify-center
+  -#   %button.block.text-white.bg-red-700.hover:bg-red-800.focus:ring-4.focus:ring-red-300.font-medium.rounded-lg.text-sm.px-5.text-center.dark:bg-blue-600.dark:hover:bg-blue-700.dark:focus:ring-blue-800{:class => "py-2.5", "data-modal-toggle" => "defaultModal", :type => "button", :id => "openBtn"}
+  -#     New Article
+  -# .mb-10.pb-10.border-b.border-black
+  %div{ role: "list"}
+    - @articles.each do |article|
+      %div{ role: "listitem"}
+        = link_to root_path do
+          %h1{ class: "mt-0 mb-2.5 text-3xl hover:text-gray-600" }
+            = article.title
 
-        %div{ class: "my-2.5 text-sm flex" }
-          .mr-2.tracking-wide
-            = article.created_at.strftime("%B %d, %Y")
-          .mr-2.tracking-wide
-            |
-          .mr-2.tracking-wide
-            = article.author
-        
-        %p{ class: "mb-2.5 mt-0 font-light text-base" }
-          = truncate(article.content, :length => 250, :separator => ' ')
+      %div{ class: "my-2.5 text-sm flex" }
+        .mr-2.tracking-wide
+          = article.created_at.strftime("%B %d, %Y")
+        .mr-2.tracking-wide
+          |
+        .mr-2.tracking-wide
+          = article.author
+      
+      %p{ class: "mb-2.5 mt-0 font-light text-base" }
+        = truncate(article.content, :length => 250, :separator => ' ')
 
-        = link_to "Continue reading ->", article, class: "py-2 px-3 border-2 border-gray-400 rounded-xl hover:border-gray-600"
+      = link_to "Continue reading ->", article, class: "py-2 px-3 border-2 border-gray-400 rounded-xl hover:border-gray-600"
 
-        .mb-10.pb-10.border-b.border-black
-            
-          
-          
+      .mb-10.pb-10.border-b.border-black
+
