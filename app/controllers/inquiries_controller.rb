@@ -17,7 +17,7 @@ class InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
 
     if @inquiry.save
-      redirect_to @inquiry
+      redirect_to root_path
     else
       flash[:error] = "Blank field"
       render :new
